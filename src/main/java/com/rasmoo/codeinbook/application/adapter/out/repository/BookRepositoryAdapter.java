@@ -1,4 +1,4 @@
-package com.rasmoo.codeinbook.application.adapter.out;
+package com.rasmoo.codeinbook.application.adapter.out.repository;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
 import com.rasmoo.codeinbook.common.dto.PageDTO;

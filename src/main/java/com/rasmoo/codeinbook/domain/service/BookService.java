@@ -2,13 +2,14 @@ package com.rasmoo.codeinbook.domain.service;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
 import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.domain.port.in.BookServicePort;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
 
-public class BookService {
+public class BookService implements BookServicePort {
 
     private BookRepositoryPort bookRepositoryPort;
 
-    private BookService(BookRepositoryPort bookRepositoryPort) {
+    public BookService(BookRepositoryPort bookRepositoryPort) {
         this.bookRepositoryPort = bookRepositoryPort;
     }
 
