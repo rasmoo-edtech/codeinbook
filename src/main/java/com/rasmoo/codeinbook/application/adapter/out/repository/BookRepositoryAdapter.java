@@ -43,7 +43,7 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
     }
 
     @Override
-    public void delete(String id) {
+    public void deleteById(String id) {
         getBook(id);
         bookRepository.deleteById(id);
     }

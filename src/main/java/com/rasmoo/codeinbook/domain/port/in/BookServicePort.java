@@ -12,7 +12,7 @@ public interface BookServicePort {
 
      BookDTO findById(String id);
 
-     void delete(String id);
+     void deleteById(String id);
 
     PageDTO<BookDTO> findAll(int page, int size);
 
