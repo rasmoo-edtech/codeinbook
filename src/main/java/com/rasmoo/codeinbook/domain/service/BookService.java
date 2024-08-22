@@ -1,6 +1,7 @@
 package com.rasmoo.codeinbook.domain.service;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
+import com.rasmoo.codeinbook.common.dto.PageDTO;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
 
 public class BookService {
@@ -26,5 +27,9 @@ public class BookService {
 
     public void delete(String id) {
         bookRepositoryPort.delete(id);
+    }
+
+    public PageDTO<BookDTO> findAll(int page, int size) {
+        return bookRepositoryPort.findAll(page, size);
     }
 }
