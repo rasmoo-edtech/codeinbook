@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public record BookDTO(
         String id,
         String title,
-        String subTitle,
+        String subtitle,
         String description,
         BigDecimal price
 
