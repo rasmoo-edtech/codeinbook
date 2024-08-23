@@ -1,4 +1,4 @@
-package com.rasmoo.codeinbook.application.adapter.configuration;
+package com.rasmoo.codeinbook.application.configuration;
 
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
 import com.rasmoo.codeinbook.domain.service.BookService;

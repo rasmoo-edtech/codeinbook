@@ -3,6 +3,7 @@ package com.rasmoo.codeinbook.application.adapter.in.controller;
 import com.rasmoo.codeinbook.common.dto.BookDTO;
 import com.rasmoo.codeinbook.common.dto.PageDTO;
 import com.rasmoo.codeinbook.domain.port.in.BookServicePort;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO> create(@RequestBody BookDTO dto ) {
+    public ResponseEntity<BookDTO> create(@Valid @RequestBody BookDTO dto ) {
         return ResponseEntity.status(CREATED).body(bookServicePort.create(dto));
     }
 

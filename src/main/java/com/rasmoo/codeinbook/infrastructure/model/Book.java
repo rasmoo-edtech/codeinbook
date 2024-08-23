@@ -8,11 +8,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 import static java.util.Objects.nonNull;
 
-@Document
+@Document("books")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor

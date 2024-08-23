@@ -65,6 +65,11 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
                 .build();
     }
 
+    @Override
+    public List<BookDTO> findAllByAuthorId(String authorId) {
+        return null;
+    }
+
     private Book getBook(String id) {
         Optional<Book> bookOptional = bookRepository.findById(id);
         if (bookOptional.isEmpty()) {
