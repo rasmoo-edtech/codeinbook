@@ -4,7 +4,7 @@ package com.rasmoo.codeinbook.domain;
 import com.rasmoo.codeinbook.common.dto.AuthorDTO;
 import com.rasmoo.codeinbook.common.dto.BookDTO;
 import com.rasmoo.codeinbook.common.dto.PageDTO;
-import com.rasmoo.codeinbook.common.enums.Sort;
+import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.common.exception.BusinessException;
 import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
@@ -56,8 +56,8 @@ class AuthorServiceTest {
                 .totalPages(100)
                 .build();
 
-        when(authorRepositoryPort.findAllByName("123", 0, 10, Sort.DESC)).thenReturn(page);
-        assertEquals(page, authorService.findAllByName("123", 0, 10, Sort.DESC));
+        when(authorRepositoryPort.findAllByName("123", 0, 10, SortDirection.DESC)).thenReturn(page);
+        assertEquals(page, authorService.findAllByName("123", 0, 10, SortDirection.DESC));
     }
 
     @Test

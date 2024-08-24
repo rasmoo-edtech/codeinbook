@@ -1,6 +1,6 @@
 package com.rasmoo.codeinbook.common.enums;
 
-public enum Sort {
+public enum SortDirection {
 
     DESC,
     ASC
