@@ -3,7 +3,7 @@ package com.rasmoo.codeinbook.domain;
 
 import com.rasmoo.codeinbook.common.dto.AuthorDTO;
 import com.rasmoo.codeinbook.common.dto.BookDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.common.exception.BusinessException;
 import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
@@ -48,7 +48,7 @@ class AuthorServiceTest {
     void shouldGetAuthorByName() {
         List<AuthorDTO> authorList = List.of(getAuthorSaved());
 
-        PageDTO<AuthorDTO> page = PageDTO.<AuthorDTO>builder()
+        PageResponseDTO<AuthorDTO> page = PageResponseDTO.<AuthorDTO>builder()
                 .content(authorList)
                 .page(0)
                 .size(10)

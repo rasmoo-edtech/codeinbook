@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.domain.service;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.domain.port.in.BookServicePort;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
 
@@ -30,7 +30,7 @@ public class BookService implements BookServicePort {
         bookRepositoryPort.deleteById(id);
     }
 
-    public PageDTO<BookDTO> findAll(int page, int size) {
+    public PageResponseDTO<BookDTO> findAll(int page, int size) {
         return bookRepositoryPort.findAll(page, size);
     }
 }

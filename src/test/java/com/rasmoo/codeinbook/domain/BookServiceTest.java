@@ -2,7 +2,7 @@ package com.rasmoo.codeinbook.domain;
 
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
 import com.rasmoo.codeinbook.domain.service.BookService;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class BookServiceTest {
+class BookServiceTest {
 
     @Mock
     private BookRepositoryPort bookRepositoryPort;
@@ -60,7 +60,7 @@ public class BookServiceTest {
     void shouldGetAllBooksPaged() {
         List<BookDTO> bookList = List.of(getBookSaved());
 
-        PageDTO<BookDTO> page = PageDTO.<BookDTO>builder()
+        PageResponseDTO<BookDTO> page = PageResponseDTO.<BookDTO>builder()
                         .content(bookList)
                 .page(0)
                 .size(10)

@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.application.adapter.in.controller;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.domain.port.in.BookServicePort;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -51,7 +51,7 @@ public class BookController {
     }
 
     @GetMapping
-    public ResponseEntity<PageDTO<BookDTO>> findAll(@RequestParam("page")int page, @RequestParam("size")int size) {
+    public ResponseEntity<PageResponseDTO<BookDTO>> findAll(@RequestParam("page")int page, @RequestParam("size")int size) {
         return ResponseEntity.status(OK).body(bookServicePort.findAll(page, size));
     }
 

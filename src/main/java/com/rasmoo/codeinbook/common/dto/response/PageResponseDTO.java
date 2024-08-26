@@ -1,4 +1,4 @@
-package com.rasmoo.codeinbook.common.dto;
+package com.rasmoo.codeinbook.common.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @Getter
-public class PageDTO<T> {
+public class PageResponseDTO<T> {
 
     private List<T> content;
 

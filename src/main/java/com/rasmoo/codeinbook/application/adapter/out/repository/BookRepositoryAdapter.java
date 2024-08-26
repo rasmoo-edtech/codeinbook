@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.application.adapter.out.repository;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.exception.NotFoundException;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
 import com.rasmoo.codeinbook.infrastructure.model.Book;
@@ -48,14 +48,14 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
     }
 
     @Override
-    public PageDTO<BookDTO> findAll(int page, int size) {
+    public PageResponseDTO<BookDTO> findAll(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
         Page<Book> bookPage = bookRepository.findAll(pageRequest);
         List<BookDTO> bookList =
                 bookPage.stream()
                         .map(Book::toBookDTO)
                         .toList();
-        return PageDTO.<BookDTO>builder()
+        return PageResponseDTO.<BookDTO>builder()
                 .content(bookList)
                 .page(page)
                 .size(size)

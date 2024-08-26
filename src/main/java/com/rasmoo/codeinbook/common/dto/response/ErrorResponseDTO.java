@@ -1,4 +1,4 @@
-package com.rasmoo.codeinbook.common.dto;
+package com.rasmoo.codeinbook.common.dto.response;
 
 import org.springframework.http.HttpStatus;
 

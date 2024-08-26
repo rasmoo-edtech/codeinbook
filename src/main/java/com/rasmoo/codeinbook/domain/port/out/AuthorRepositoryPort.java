@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.domain.port.out;
 
 import com.rasmoo.codeinbook.common.dto.AuthorDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 
 public interface AuthorRepositoryPort {
@@ -10,5 +10,5 @@ public interface AuthorRepositoryPort {
 
     void deleteById(String id);
 
-    PageDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort);
+    PageResponseDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort);
 }

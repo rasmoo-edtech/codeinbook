@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.domain.service;
 
 import com.rasmoo.codeinbook.common.dto.AuthorDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.common.exception.BusinessException;
 import com.rasmoo.codeinbook.domain.port.in.AuthorServicePort;
@@ -26,7 +26,7 @@ public class AuthorService implements AuthorServicePort {
     }
 
     @Override
-    public PageDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort) {
+    public PageResponseDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort) {
         return authorRepositoryPort.findAllByName(name, page, size, sort);
     }
 

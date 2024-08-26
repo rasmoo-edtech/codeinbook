@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.common.exception.handler;
 
 
-import com.rasmoo.codeinbook.common.dto.ErrorResponseDTO;
+import com.rasmoo.codeinbook.common.dto.response.ErrorResponseDTO;
 import com.rasmoo.codeinbook.common.exception.BadRequestException;
 import com.rasmoo.codeinbook.common.exception.BusinessException;
 import com.rasmoo.codeinbook.common.exception.NotFoundException;

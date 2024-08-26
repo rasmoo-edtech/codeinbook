@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.domain.port.out;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface BookRepositoryPort {
 
     void deleteById(String id);
 
-    PageDTO<BookDTO> findAll(int page, int size);
+    PageResponseDTO<BookDTO> findAll(int page, int size);
 
     List<BookDTO> findAllByAuthorId(String authorId);
 }

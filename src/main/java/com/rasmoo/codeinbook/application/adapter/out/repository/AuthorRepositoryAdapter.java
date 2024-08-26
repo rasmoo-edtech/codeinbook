@@ -1,7 +1,7 @@
 package com.rasmoo.codeinbook.application.adapter.out.repository;
 
 import com.rasmoo.codeinbook.common.dto.AuthorDTO;
-import com.rasmoo.codeinbook.common.dto.PageDTO;
+import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.common.exception.BadRequestException;
 import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
@@ -39,14 +39,14 @@ public class AuthorRepositoryAdapter implements AuthorRepositoryPort {
     }
 
     @Override
-    public PageDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort) {
+    public PageResponseDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(sort.name()));
         Page<Author> authorPage = authorRepository.findAllByNameIgnoreCase(name,pageRequest);
         List<AuthorDTO> authorList =
                 authorPage.stream()
                         .map(Author::toAuthorDTO)
                         .toList();
-        return PageDTO.<AuthorDTO>builder()
+        return PageResponseDTO.<AuthorDTO>builder()
                 .content(authorList)
                 .totalPages(authorPage.getTotalPages())
                 .totalElements(authorPage.getTotalElements())
