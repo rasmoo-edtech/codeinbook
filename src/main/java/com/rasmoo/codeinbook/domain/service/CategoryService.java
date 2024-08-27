@@ -38,8 +38,8 @@ public class CategoryService implements CategoryServicePort {
     public void deleteById(String id) {
         CategoryDTO categoryDTO = categoryRepositoryPort.findById(id);
         if (PRIMARY.equals(categoryDTO.categoryType())
-            && !categoryRepositoryPort.findAllByCategoryId(categoryDTO.primaryCategoryId()).isEmpty()) {
-            throw new BusinessException("Primary category can not be deleted while a seconddary one is linked");
+            && !categoryRepositoryPort.findAllByCategoryId(id).isEmpty()) {
+            throw new BusinessException("Primary category can not be deleted while a secondary one is linked");
         }
         categoryRepositoryPort.deleteById(id);
     }

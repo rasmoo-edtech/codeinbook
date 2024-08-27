@@ -38,7 +38,7 @@ public class Category {
     }
 
     public CategoryDTO toCategoryDTO() {
-        return new CategoryDTO(id, name, categoryType, primaryCategory.id);
+        return new CategoryDTO(id, name, categoryType,  nonNull(primaryCategory) ? primaryCategory.id : null);
     }
 
 }
