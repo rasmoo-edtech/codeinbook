@@ -18,7 +18,7 @@ import static java.util.Objects.nonNull;
 @Component
 public class CategoryRepositoryAdapter implements CategoryRepositoryPort {
 
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
     public CategoryRepositoryAdapter(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;

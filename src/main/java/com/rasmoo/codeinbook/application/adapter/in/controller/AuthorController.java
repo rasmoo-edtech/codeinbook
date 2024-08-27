@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/authors")
@@ -27,7 +28,7 @@ public class AuthorController {
     }
 
     @PostMapping
-    public ResponseEntity<AuthorDTO> create(@RequestBody AuthorDTO dto){
+    public ResponseEntity<AuthorDTO> create(@RequestBody AuthorDTO dto) {
         return ResponseEntity.status(CREATED).body(authorServicePort.create(dto));
     }
 
@@ -36,8 +37,8 @@ public class AuthorController {
                                                                  @RequestParam(value = "page", defaultValue = "0") int page,
                                                                  @RequestParam(value = "size", defaultValue = "10") int size,
                                                                  @RequestParam(value = "sort", required = false,
-                                                                 defaultValue = "ASC") String sort) {
-        return ResponseEntity.status(OK).body(authorServicePort.findAllByName(name,page,size,SortDirection.valueOf(sort.toUpperCase())));
+                                                                         defaultValue = "ASC") String sort) {
+        return ResponseEntity.status(OK).body(authorServicePort.findAllByName(name, page, size, SortDirection.valueOf(sort.toUpperCase())));
     }
 
     @DeleteMapping("/{id}")

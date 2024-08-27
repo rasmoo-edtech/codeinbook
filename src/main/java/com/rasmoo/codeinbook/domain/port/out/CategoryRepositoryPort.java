@@ -17,6 +17,7 @@ public interface CategoryRepositoryPort {
     List<CategoryDTO> findAllByCategoryType(CategoryType categoryType);
 
     List<CategoryDTO> findAllByCategoryId(String primaryCategoryId);
+
     void deleteById(String id);
 
 }

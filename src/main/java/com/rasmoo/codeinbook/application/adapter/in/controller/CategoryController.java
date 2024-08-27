@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
 
-    private CategoryServicePort categoryServicePort;
+    private final CategoryServicePort categoryServicePort;
 
     public CategoryController(CategoryServicePort categoryServicePort) {
         this.categoryServicePort = categoryServicePort;

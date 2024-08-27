@@ -10,9 +10,9 @@ import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
 
 public class AuthorService implements AuthorServicePort {
 
-    private AuthorRepositoryPort authorRepositoryPort;
+    private final AuthorRepositoryPort authorRepositoryPort;
 
-    private BookRepositoryPort bookRepositoryPort;
+    private final BookRepositoryPort bookRepositoryPort;
 
     public AuthorService(AuthorRepositoryPort authorRepositoryPort, BookRepositoryPort bookRepositoryPort) {
         this.authorRepositoryPort = authorRepositoryPort;
@@ -33,7 +33,7 @@ public class AuthorService implements AuthorServicePort {
     @Override
     public void deleteById(String id) {
         if (!bookRepositoryPort.findAllByAuthorId(id).isEmpty()) {
-            throw  new BusinessException("Author can not be deleted because there is one or more books saved");
+            throw new BusinessException("Author can not be deleted because there is one or more books saved");
         }
         authorRepositoryPort.deleteById(id);
     }

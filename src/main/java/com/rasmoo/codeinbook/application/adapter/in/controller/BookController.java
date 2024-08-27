@@ -22,14 +22,14 @@ import static org.springframework.http.HttpStatus.OK;
 @RequestMapping("/books")
 public class BookController {
 
-    private BookServicePort bookServicePort;
+    private final BookServicePort bookServicePort;
 
-    public BookController(BookServicePort bookServicePort){
+    public BookController(BookServicePort bookServicePort) {
         this.bookServicePort = bookServicePort;
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO> create(@Valid @RequestBody BookDTO dto ) {
+    public ResponseEntity<BookDTO> create(@Valid @RequestBody BookDTO dto) {
         return ResponseEntity.status(CREATED).body(bookServicePort.create(dto));
     }
 
@@ -40,20 +40,20 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BookDTO> findById(@PathVariable("id") String id ) {
+    public ResponseEntity<BookDTO> findById(@PathVariable("id") String id) {
         return ResponseEntity.status(OK).body(bookServicePort.findById(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable("id") String id  ) {
+    public ResponseEntity<Void> deleteById(@PathVariable("id") String id) {
         bookServicePort.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping
-    public ResponseEntity<PageResponseDTO<BookDTO>> findAll(@RequestParam(value = "page", defaultValue = "0")int page,
-                                                            @RequestParam(value ="size", defaultValue = "10")int size,
-                                                            @RequestParam(value ="categoryId", required = false)String categoryId) {
+    public ResponseEntity<PageResponseDTO<BookDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                            @RequestParam(value = "size", defaultValue = "10") int size,
+                                                            @RequestParam(value = "categoryId", required = false) String categoryId) {
         return ResponseEntity.status(OK).body(bookServicePort.findAll(page, size, categoryId));
     }
 

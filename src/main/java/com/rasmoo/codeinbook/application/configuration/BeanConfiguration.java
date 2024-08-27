@@ -13,13 +13,15 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
 
     @Bean
-    public BookService bookService(BookRepositoryPort bookRepositoryPort) {
-        return new BookService(bookRepositoryPort);
+    public BookService bookService(BookRepositoryPort bookRepositoryPort,
+                                   CategoryRepositoryPort categoryRepositoryPort,
+                                   AuthorRepositoryPort authorRepositoryPort) {
+        return new BookService(bookRepositoryPort, categoryRepositoryPort, authorRepositoryPort);
     }
 
     @Bean
     public AuthorService authorService(AuthorRepositoryPort authorRepositoryPort, BookRepositoryPort bookRepositoryPort) {
-        return new AuthorService(authorRepositoryPort,bookRepositoryPort);
+        return new AuthorService(authorRepositoryPort, bookRepositoryPort);
     }
 
     @Bean
