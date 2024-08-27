@@ -3,16 +3,19 @@ package com.rasmoo.codeinbook.infrastructure.model;
 import com.rasmoo.codeinbook.common.dto.CategoryDTO;
 import com.rasmoo.codeinbook.common.enums.CategoryType;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import static java.util.Objects.nonNull;
 
 @Document("categories")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Category {
 
     @Id
@@ -20,8 +23,10 @@ public class Category {
 
     private String name;
 
+    @Field("category_type")
     private CategoryType categoryType;
 
+    @Field("primary_category")
     @DBRef
     private Category primaryCategory;
 
@@ -32,7 +37,7 @@ public class Category {
         this.primaryCategory = nonNull(primaryCategory) ? primaryCategory : this.primaryCategory;
     }
 
-    public CategoryDTO categoryDTO() {
+    public CategoryDTO toCategoryDTO() {
         return new CategoryDTO(id, name, categoryType, primaryCategory.id);
     }
 

@@ -2,8 +2,10 @@ package com.rasmoo.codeinbook.application.configuration;
 
 import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.CategoryRepositoryPort;
 import com.rasmoo.codeinbook.domain.service.AuthorService;
 import com.rasmoo.codeinbook.domain.service.BookService;
+import com.rasmoo.codeinbook.domain.service.CategoryService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,5 +22,9 @@ public class BeanConfiguration {
         return new AuthorService(authorRepositoryPort,bookRepositoryPort);
     }
 
+    @Bean
+    public CategoryService categoryService(CategoryRepositoryPort categoryRepositoryPort) {
+        return new CategoryService(categoryRepositoryPort);
+    }
 
 }

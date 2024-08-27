@@ -51,8 +51,10 @@ public class BookController {
     }
 
     @GetMapping
-    public ResponseEntity<PageResponseDTO<BookDTO>> findAll(@RequestParam("page")int page, @RequestParam("size")int size) {
-        return ResponseEntity.status(OK).body(bookServicePort.findAll(page, size));
+    public ResponseEntity<PageResponseDTO<BookDTO>> findAll(@RequestParam(value = "page", defaultValue = "0")int page,
+                                                            @RequestParam(value ="size", defaultValue = "10")int size,
+                                                            @RequestParam(value ="categoryId", required = false)String categoryId) {
+        return ResponseEntity.status(OK).body(bookServicePort.findAll(page, size, categoryId));
     }
 
 }

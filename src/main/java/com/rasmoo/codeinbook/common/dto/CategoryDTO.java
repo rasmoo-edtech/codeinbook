@@ -11,5 +11,5 @@ public record CategoryDTO(
 
         @NotBlank(message = "must be not blank")
         CategoryType categoryType,
-        String categoryPrimaryId
+        String primaryCategoryId
 ) {}

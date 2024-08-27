@@ -1,10 +1,15 @@
 package com.rasmoo.codeinbook.application.adapter.out.repository;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
+import com.rasmoo.codeinbook.common.dto.CategoryDTO;
 import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.exception.NotFoundException;
+import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
 import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.CategoryRepositoryPort;
+import com.rasmoo.codeinbook.infrastructure.model.Author;
 import com.rasmoo.codeinbook.infrastructure.model.Book;
+import com.rasmoo.codeinbook.infrastructure.model.Category;
 import com.rasmoo.codeinbook.infrastructure.repository.BookRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,17 +18,29 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Objects.nonNull;
+
 @Component
 public class BookRepositoryAdapter implements BookRepositoryPort {
 
     private final BookRepository bookRepository;
 
-    public BookRepositoryAdapter(BookRepository bookRepository) {
+    private final CategoryRepositoryPort categoryRepositoryPort;
+
+    private final AuthorRepositoryPort authorRepositoryPort;
+
+    public BookRepositoryAdapter(BookRepository bookRepository,
+                                 CategoryRepositoryPort categoryRepositoryPort,
+                                 AuthorRepositoryPort authorRepositoryPort) {
         this.bookRepository = bookRepository;
+        this.categoryRepositoryPort = categoryRepositoryPort;
+        this.authorRepositoryPort = authorRepositoryPort;
     }
 
     @Override
     public BookDTO create(BookDTO dto) {
+        categoryRepositoryPort.findById(dto.categoryId());
+        authorRepositoryPort.findById(dto.authorId());
         Book book = new Book();
         book.with(dto);
         return bookRepository.save(book).toBookDTO();
@@ -31,6 +48,8 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
 
     @Override
     public void update(String id, BookDTO dto) {
+        categoryRepositoryPort.findById(dto.categoryId());
+        authorRepositoryPort.findById(dto.authorId());
         Book book = getBook(id);
         book.with(dto);
         bookRepository.save(book);
@@ -48,9 +67,14 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
     }
 
     @Override
-    public PageResponseDTO<BookDTO> findAll(int page, int size) {
+    public PageResponseDTO<BookDTO> findAll(int page, int size, String categoryId) {
         PageRequest pageRequest = PageRequest.of(page, size);
-        Page<Book> bookPage = bookRepository.findAll(pageRequest);
+        Page<Book> bookPage;
+        if (nonNull(categoryId) && categoryId.isBlank()) {
+            bookPage = bookRepository.findAll(pageRequest);
+        } else {
+            bookPage = bookRepository.findAllByCategoryId(categoryId, pageRequest);
+        }
         List<BookDTO> bookList =
                 bookPage.stream()
                         .map(Book::toBookDTO)

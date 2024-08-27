@@ -14,6 +14,6 @@ public interface BookServicePort {
 
      void deleteById(String id);
 
-    PageResponseDTO<BookDTO> findAll(int page, int size);
+    PageResponseDTO<BookDTO> findAll(int page, int size, String categoryId);
 
 }

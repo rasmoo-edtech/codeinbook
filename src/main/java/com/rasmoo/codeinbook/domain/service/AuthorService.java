@@ -32,7 +32,7 @@ public class AuthorService implements AuthorServicePort {
 
     @Override
     public void deleteById(String id) {
-        if (bookRepositoryPort.findAllByAuthorId(id).isEmpty()) {
+        if (!bookRepositoryPort.findAllByAuthorId(id).isEmpty()) {
             throw  new BusinessException("Author can not be deleted because there is one or more books saved");
         }
         authorRepositoryPort.deleteById(id);

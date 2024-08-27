@@ -11,8 +11,6 @@ public interface CategoryServicePort {
 
     List<CategoryResponseDTO> findAll();
 
-    void update(String id);
-
     void deleteById(String id);
 
 }

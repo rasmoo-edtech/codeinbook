@@ -14,4 +14,5 @@ public record CategoryResponseDTO(
         List<CategoryDTO> secondariesCategory
 
 ) {
+
 }

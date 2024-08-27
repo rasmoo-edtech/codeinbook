@@ -11,7 +11,11 @@ public record BookDTO(
         String title,
         String subtitle,
         String description,
-        BigDecimal price
+        BigDecimal price,
+
+        String authorId,
+
+        String categoryId
 
 
 ) {

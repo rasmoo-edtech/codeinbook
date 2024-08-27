@@ -30,7 +30,7 @@ public class BookService implements BookServicePort {
         bookRepositoryPort.deleteById(id);
     }
 
-    public PageResponseDTO<BookDTO> findAll(int page, int size) {
-        return bookRepositoryPort.findAll(page, size);
+    public PageResponseDTO<BookDTO> findAll(int page, int size, String categoryId) {
+        return bookRepositoryPort.findAll(page, size, categoryId);
     }
 }

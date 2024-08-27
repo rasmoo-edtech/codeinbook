@@ -35,22 +35,22 @@ public class CategoryService implements CategoryServicePort {
     }
 
     @Override
-    public void update(String id) {
-        categoryRepositoryPort.update(id);
-    }
-
-    @Override
     public void deleteById(String id) {
+        CategoryDTO categoryDTO = categoryRepositoryPort.findById(id);
+        if (PRIMARY.equals(categoryDTO.categoryType())
+            && !categoryRepositoryPort.findAllByCategoryId(categoryDTO.primaryCategoryId()).isEmpty()) {
+            throw new BusinessException("Primary category can not be deleted while a seconddary one is linked");
+        }
         categoryRepositoryPort.deleteById(id);
     }
 
     private void checkCategoryBond(CategoryDTO dto) {
         if (SECONDARY.equals(dto.categoryType())
-                && ((isNull(dto.categoryPrimaryId()) || dto.categoryPrimaryId().isBlank())
-                || SECONDARY.equals(categoryRepositoryPort.findById(dto.categoryPrimaryId()).categoryType()))) {
+                && ((isNull(dto.primaryCategoryId()) || dto.primaryCategoryId().isBlank())
+                || SECONDARY.equals(categoryRepositoryPort.findById(dto.primaryCategoryId()).categoryType()))) {
             throw new BadRequestException("Secondary category must have a primary category id");
         } else if (PRIMARY.equals(dto.categoryType())
-                && nonNull(dto.categoryPrimaryId())){
+                && nonNull(dto.primaryCategoryId())){
             throw new BusinessException("Primary category can not be linked to another category");
         }
     }
@@ -60,7 +60,7 @@ public class CategoryService implements CategoryServicePort {
                 && categoryRepositoryPort.findAllByCategoryType(PRIMARY).size() > 5) {
             throw new BusinessException("Primary Category reached the limit");
         } else if (SECONDARY.equals(dto.categoryType())
-                && categoryRepositoryPort.findAllByCategoryId(dto.categoryPrimaryId()).size() > 7) {
+                && categoryRepositoryPort.findAllByCategoryId(dto.primaryCategoryId()).size() > 7) {
             throw new BusinessException("Primary Category reached the limit of Secondaries Categories");
         }
     }

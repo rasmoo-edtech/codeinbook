@@ -15,7 +15,7 @@ public interface BookRepositoryPort {
 
     void deleteById(String id);
 
-    PageResponseDTO<BookDTO> findAll(int page, int size);
+    PageResponseDTO<BookDTO> findAll(int page, int size, String categoryId);
 
     List<BookDTO> findAllByAuthorId(String authorId);
 }

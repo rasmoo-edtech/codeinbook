@@ -5,6 +5,7 @@ import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.domain.port.in.AuthorServicePort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,11 +33,17 @@ public class AuthorController {
 
     @GetMapping("/{name}")
     public ResponseEntity<PageResponseDTO<AuthorDTO>> findByName(@PathVariable("name") String name,
-                                                                 @RequestParam("page") int page,
-                                                                 @RequestParam("size") int size,
+                                                                 @RequestParam(value = "page", defaultValue = "0") int page,
+                                                                 @RequestParam(value = "size", defaultValue = "10") int size,
                                                                  @RequestParam(value = "sort", required = false,
                                                                  defaultValue = "ASC") String sort) {
-        return ResponseEntity.status(OK).body(authorServicePort.findAllByName(name,page,size,SortDirection.valueOf(sort)));
+        return ResponseEntity.status(OK).body(authorServicePort.findAllByName(name,page,size,SortDirection.valueOf(sort.toUpperCase())));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable("id") String id) {
+        authorServicePort.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -29,8 +29,9 @@ public class Book {
 
     private BigDecimal price;
 
-    @DBRef
-    private Author author;
+    private String authorId;
+
+    private String categoryId;
 
     public void with(BookDTO dto) {
         this.id = nonNull(dto.id()) ? dto.id() : this.id;
@@ -38,10 +39,12 @@ public class Book {
         this.subtitle = nonNull(dto.subtitle()) ? dto.subtitle() : this.subtitle;
         this.description = nonNull(dto.description()) ? dto.description() : this.description;
         this.price = nonNull(dto.price()) ? dto.price() : this.price;
+        this.authorId = nonNull(dto.authorId()) ? dto.authorId() : this.authorId;
+        this.categoryId = nonNull(dto.categoryId()) ? dto.categoryId() : this.categoryId;
     }
 
     public BookDTO toBookDTO() {
-        return new BookDTO(id, title, subtitle, description, price);
+        return new BookDTO(id, title, subtitle, description, price, authorId, categoryId);
     }
 
 }

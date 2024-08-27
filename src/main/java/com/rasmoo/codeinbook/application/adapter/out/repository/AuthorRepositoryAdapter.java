@@ -4,6 +4,7 @@ import com.rasmoo.codeinbook.common.dto.AuthorDTO;
 import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.common.exception.BadRequestException;
+import com.rasmoo.codeinbook.common.exception.NotFoundException;
 import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
 import com.rasmoo.codeinbook.infrastructure.model.Author;
 import com.rasmoo.codeinbook.infrastructure.repository.AuthorRepository;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class AuthorRepositoryAdapter implements AuthorRepositoryPort {
@@ -39,9 +41,14 @@ public class AuthorRepositoryAdapter implements AuthorRepositoryPort {
     }
 
     @Override
+    public AuthorDTO findById(String id) {
+        return getAuthorById(id).toAuthorDTO();
+    }
+
+    @Override
     public PageResponseDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort) {
-        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(sort.name()));
-        Page<Author> authorPage = authorRepository.findAllByNameIgnoreCase(name,pageRequest);
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(sort.name()), "name");
+        Page<Author> authorPage = authorRepository.findAllByNameContainsIgnoreCase(name, pageRequest);
         List<AuthorDTO> authorList =
                 authorPage.stream()
                         .map(Author::toAuthorDTO)
@@ -54,4 +61,14 @@ public class AuthorRepositoryAdapter implements AuthorRepositoryPort {
                 .size(size)
                 .build();
     }
+
+    private Author getAuthorById(String id) {
+        Optional<Author> authorOptional = authorRepository.findById(id);
+        if (authorOptional.isEmpty()) {
+            throw new NotFoundException("Author not found");
+        }
+        return authorOptional.get();
+    }
+
+
 }

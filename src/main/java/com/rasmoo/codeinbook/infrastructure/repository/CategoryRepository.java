@@ -12,6 +12,6 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
 
     List<Category> findAllByCategoryType(CategoryType categoryType);
 
-    List<Category> findAllByCategoryId(String categoryId);
+    List<Category> findAllByPrimaryCategoryId(String categoryId);
 
 }

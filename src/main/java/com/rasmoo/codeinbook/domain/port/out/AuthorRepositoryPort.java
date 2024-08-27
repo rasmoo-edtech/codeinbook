@@ -8,6 +8,8 @@ public interface AuthorRepositoryPort {
 
     AuthorDTO create(AuthorDTO dto);
 
+    AuthorDTO findById(String id);
+
     void deleteById(String id);
 
     PageResponseDTO<AuthorDTO> findAllByName(String name, int page, int size, SortDirection sort);

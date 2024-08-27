@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AuthorRepository extends MongoRepository<Author, String> {
 
-    Page<Author> findAllByNameIgnoreCase(String name, PageRequest pageRequest);
+    Page<Author> findAllByNameContainsIgnoreCase(String name, PageRequest pageRequest);
 
 }
