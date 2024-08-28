@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
 
@@ -29,8 +30,10 @@ public class Book {
 
     private BigDecimal price;
 
+    @Field("author_id")
     private String authorId;
 
+    @Field("category_id")
     private String categoryId;
 
     public void with(BookDTO dto) {
