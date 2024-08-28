@@ -28,7 +28,7 @@ class BookServiceTest {
 
     @Test
     void shouldCreateNewBook() {
-        BookDTO bookDTO = new BookDTO("", "Partindo do zero com java", "aprenda a programar agora", "", BigDecimal.valueOf(29.90));
+        BookDTO bookDTO = new BookDTO("", "Partindo do zero com java", "aprenda a programar agora", "", BigDecimal.valueOf(29.90), null, null);
         BookDTO bookSaved = getBookSaved();
         when(bookRepositoryPort.create(bookDTO)).thenReturn(bookSaved);
         assertEquals(bookSaved, bookService.create(bookDTO));
@@ -68,12 +68,12 @@ class BookServiceTest {
                 .totalPages(100)
                 .build();
 
-        when(bookRepositoryPort.findAll(0,10)).thenReturn(page);
-        assertEquals(page, bookService.findAll(0,10));
+        when(bookRepositoryPort.findAll(0,10, null)).thenReturn(page);
+        assertEquals(page, bookService.findAll(0,10,null));
     }
 
     private static BookDTO getBookSaved() {
-        return new BookDTO("123", "Partindo do zero com java", "aprenda a programar agora", "", BigDecimal.valueOf(29.90));
+        return new BookDTO("123", "Partindo do zero com java", "aprenda a programar agora", "", BigDecimal.valueOf(29.90), null, null);
     }
 
 

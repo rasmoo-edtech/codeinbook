@@ -51,7 +51,7 @@ public class CategoryService implements CategoryServicePort {
             throw new BadRequestException("Secondary category must have a primary category id");
         } else if (PRIMARY.equals(dto.categoryType())
                 && nonNull(dto.primaryCategoryId())) {
-            throw new BusinessException("Primary category can not be linked to another category");
+            throw new BadRequestException("Primary category can not be linked to another category");
         }
     }
 
