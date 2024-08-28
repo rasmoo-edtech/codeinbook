@@ -62,14 +62,14 @@ class AuthorServiceTest {
 
     @Test
     void shouldDeleteBook() {
-        when(bookRepositoryPort.findAllByAuthorId("123")).thenReturn(List.of(new BookDTO("123", "livro do autor", "", "", null)));
+        when(bookRepositoryPort.findAllByAuthorId("123")).thenReturn(Collections.emptyList());
         authorService.deleteById("123");
         verify(authorRepositoryPort, times(1)).deleteById("123");
     }
 
     @Test
     void shouldNotDeleteBook() {
-        when(bookRepositoryPort.findAllByAuthorId("123")).thenReturn(Collections.emptyList());
+        when(bookRepositoryPort.findAllByAuthorId("123")).thenReturn(List.of(new BookDTO("123","title","",null,null,null,null)));
         assertThrows(BusinessException.class,
                 () -> authorService.deleteById("123"));
         verify(authorRepositoryPort, times(0)).deleteById(any());
