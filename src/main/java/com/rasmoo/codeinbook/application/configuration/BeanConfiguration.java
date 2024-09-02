@@ -1,8 +1,8 @@
 package com.rasmoo.codeinbook.application.configuration;
 
-import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
-import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
-import com.rasmoo.codeinbook.domain.port.out.CategoryRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.AuthorRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.BookRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.CategoryRepositoryPort;
 import com.rasmoo.codeinbook.domain.service.AuthorService;
 import com.rasmoo.codeinbook.domain.service.BookService;
 import com.rasmoo.codeinbook.domain.service.CategoryService;

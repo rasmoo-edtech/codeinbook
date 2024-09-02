@@ -1,4 +1,4 @@
-package com.rasmoo.codeinbook.domain.port.out;
+package com.rasmoo.codeinbook.domain.port.out.repository;
 
 import com.rasmoo.codeinbook.common.dto.AuthorDTO;
 import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;

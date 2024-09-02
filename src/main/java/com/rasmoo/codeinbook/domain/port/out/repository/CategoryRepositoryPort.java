@@ -1,4 +1,4 @@
-package com.rasmoo.codeinbook.domain.port.out;
+package com.rasmoo.codeinbook.domain.port.out.repository;
 
 import com.rasmoo.codeinbook.common.dto.CategoryDTO;
 import com.rasmoo.codeinbook.common.dto.response.CategoryResponseDTO;

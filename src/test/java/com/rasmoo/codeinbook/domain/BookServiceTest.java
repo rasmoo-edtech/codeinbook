@@ -3,7 +3,7 @@ package com.rasmoo.codeinbook.domain;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
 import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
-import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.BookRepositoryPort;
 import com.rasmoo.codeinbook.domain.service.BookService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

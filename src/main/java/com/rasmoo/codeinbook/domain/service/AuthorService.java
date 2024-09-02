@@ -5,8 +5,8 @@ import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.common.exception.BusinessException;
 import com.rasmoo.codeinbook.domain.port.in.AuthorServicePort;
-import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
-import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.AuthorRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.BookRepositoryPort;
 
 public class AuthorService implements AuthorServicePort {
 

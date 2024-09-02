@@ -5,7 +5,7 @@ import com.rasmoo.codeinbook.common.dto.response.CategoryResponseDTO;
 import com.rasmoo.codeinbook.common.enums.CategoryType;
 import com.rasmoo.codeinbook.common.exception.BadRequestException;
 import com.rasmoo.codeinbook.common.exception.BusinessException;
-import com.rasmoo.codeinbook.domain.port.out.CategoryRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.CategoryRepositoryPort;
 import com.rasmoo.codeinbook.domain.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

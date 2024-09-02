@@ -4,7 +4,7 @@ import com.rasmoo.codeinbook.common.dto.CategoryDTO;
 import com.rasmoo.codeinbook.common.dto.response.CategoryResponseDTO;
 import com.rasmoo.codeinbook.common.enums.CategoryType;
 import com.rasmoo.codeinbook.common.exception.NotFoundException;
-import com.rasmoo.codeinbook.domain.port.out.CategoryRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.CategoryRepositoryPort;
 import com.rasmoo.codeinbook.infrastructure.model.Category;
 import com.rasmoo.codeinbook.infrastructure.repository.CategoryRepository;
 import org.springframework.stereotype.Component;

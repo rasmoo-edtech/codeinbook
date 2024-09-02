@@ -3,9 +3,9 @@ package com.rasmoo.codeinbook.domain.service;
 import com.rasmoo.codeinbook.common.dto.BookDTO;
 import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.domain.port.in.BookServicePort;
-import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
-import com.rasmoo.codeinbook.domain.port.out.BookRepositoryPort;
-import com.rasmoo.codeinbook.domain.port.out.CategoryRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.AuthorRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.BookRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.CategoryRepositoryPort;
 
 import static java.util.Objects.nonNull;
 

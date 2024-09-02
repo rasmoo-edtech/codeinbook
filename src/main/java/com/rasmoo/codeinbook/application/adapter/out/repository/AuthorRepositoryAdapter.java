@@ -5,7 +5,7 @@ import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 import com.rasmoo.codeinbook.common.enums.SortDirection;
 import com.rasmoo.codeinbook.common.exception.BadRequestException;
 import com.rasmoo.codeinbook.common.exception.NotFoundException;
-import com.rasmoo.codeinbook.domain.port.out.AuthorRepositoryPort;
+import com.rasmoo.codeinbook.domain.port.out.repository.AuthorRepositoryPort;
 import com.rasmoo.codeinbook.infrastructure.model.Author;
 import com.rasmoo.codeinbook.infrastructure.repository.AuthorRepository;
 import org.springframework.data.domain.Page;
