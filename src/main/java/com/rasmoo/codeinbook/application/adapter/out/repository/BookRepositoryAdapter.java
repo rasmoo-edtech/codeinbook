@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 @Component
 public class BookRepositoryAdapter implements BookRepositoryPort {
@@ -34,9 +35,13 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
 
 
     @Override
-    public void update(String id, BookDTO dto) {
+    public void update(String id, BookDTO dto, String categoryId) {
         Book book = getBook(id);
-        book.with(dto);
+        if (nonNull(dto)) {
+            book.with(dto);
+        } else {
+           book.withCategoryId(categoryId);
+        }
         bookRepository.save(book);
     }
 
@@ -77,6 +82,14 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
     public List<BookDTO> findAllByAuthorId(String authorId) {
         return bookRepository
                 .findBookByAuthorId(authorId)
+                .stream().map(Book::toBookDTO)
+                .toList();
+    }
+
+    @Override
+    public List<BookDTO> findAllByCategoryId(String categoryId) {
+        return bookRepository
+                .findAllByCategoryId(categoryId,null)
                 .stream().map(Book::toBookDTO)
                 .toList();
     }

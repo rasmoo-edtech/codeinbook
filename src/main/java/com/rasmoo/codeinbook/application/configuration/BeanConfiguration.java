@@ -1,5 +1,6 @@
 package com.rasmoo.codeinbook.application.configuration;
 
+import com.rasmoo.codeinbook.domain.port.out.producer.EventProducerPort;
 import com.rasmoo.codeinbook.domain.port.out.repository.AuthorRepositoryPort;
 import com.rasmoo.codeinbook.domain.port.out.repository.BookRepositoryPort;
 import com.rasmoo.codeinbook.domain.port.out.repository.CategoryRepositoryPort;
@@ -25,8 +26,9 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public CategoryService categoryService(CategoryRepositoryPort categoryRepositoryPort) {
-        return new CategoryService(categoryRepositoryPort);
+    public CategoryService categoryService(CategoryRepositoryPort categoryRepositoryPort,
+                                           EventProducerPort eventProducerPort) {
+        return new CategoryService(categoryRepositoryPort, eventProducerPort);
     }
 
 }

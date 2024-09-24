@@ -39,7 +39,7 @@ class BookServiceTest {
     void shouldUpdateBook() {
         BookDTO bookSaved = getBookSaved();
         bookService.update("123",bookSaved);
-        verify(bookRepositoryPort, times(1)).update("123", bookSaved);
+        verify(bookRepositoryPort, times(1)).update("123", bookSaved, null);
 
     }
 

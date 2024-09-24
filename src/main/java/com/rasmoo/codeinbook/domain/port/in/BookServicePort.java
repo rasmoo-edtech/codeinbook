@@ -1,6 +1,7 @@
 package com.rasmoo.codeinbook.domain.port.in;
 
 import com.rasmoo.codeinbook.common.dto.BookDTO;
+import com.rasmoo.codeinbook.common.dto.CategoryBookEventDTO;
 import com.rasmoo.codeinbook.common.dto.response.PageResponseDTO;
 
 public interface BookServicePort {
@@ -16,4 +17,5 @@ public interface BookServicePort {
 
     PageResponseDTO<BookDTO> findAll(int page, int size, String categoryId);
 
+    void updateAllCategoriesId(CategoryBookEventDTO eventDTO);
 }

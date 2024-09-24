@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -44,6 +43,10 @@ public class Book {
         this.price = nonNull(dto.price()) ? dto.price() : this.price;
         this.authorId = nonNull(dto.authorId()) ? dto.authorId() : this.authorId;
         this.categoryId = nonNull(dto.categoryId()) ? dto.categoryId() : this.categoryId;
+    }
+
+    public void withCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public BookDTO toBookDTO() {

@@ -9,7 +9,7 @@ public interface BookRepositoryPort {
 
     BookDTO create(BookDTO dto);
 
-    void update(String id, BookDTO dto);
+    void update(String id, BookDTO dto, String categoryId);
 
     BookDTO findById(String id);
 
@@ -18,4 +18,6 @@ public interface BookRepositoryPort {
     PageResponseDTO<BookDTO> findAll(int page, int size, String categoryId);
 
     List<BookDTO> findAllByAuthorId(String authorId);
+
+    List<BookDTO> findAllByCategoryId(String categoryId);
 }
