@@ -1,10 +1,11 @@
 package com.rasmoo.codeinbook.domain.service;
 
 import com.rasmoo.codeinbook.common.dto.PaymentDTO;
+import com.rasmoo.codeinbook.domain.port.in.PaymentServicePort;
 import com.rasmoo.codeinbook.domain.port.out.producer.MessageBrokerPort;
 import com.rasmoo.codeinbook.domain.port.out.repository.PaymentRepositoryPort;
 
-public class PaymentService {
+public class PaymentService implements PaymentServicePort {
 
     private final PaymentRepositoryPort paymentRepositoryPort;
 
