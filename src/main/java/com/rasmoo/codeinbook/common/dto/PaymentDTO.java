@@ -39,7 +39,7 @@ public record PaymentDTO(
             @Size(min = 16, max = 16)
             String number,
             @NotBlank(message = "can not be empty or null")
-            String fullname,
+            String fullName,
             @Size(min = 3, max = 3)
             String securityCode,
             @Size(min = 4, max = 4)
