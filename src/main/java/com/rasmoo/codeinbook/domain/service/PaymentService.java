@@ -6,19 +6,19 @@ import com.rasmoo.codeinbook.domain.port.out.repository.PaymentRepositoryPort;
 
 public class PaymentService {
 
-    private PaymentRepositoryPort paymentRepositoryPort;
+    private final PaymentRepositoryPort paymentRepositoryPort;
 
-    private MessageBrokerPort messageBrokerPort;
+    private final MessageBrokerPort paymentProducer;
 
     public PaymentService(PaymentRepositoryPort paymentRepositoryPort,
                           MessageBrokerPort messageBrokerPort) {
         this.paymentRepositoryPort = paymentRepositoryPort;
-        this.messageBrokerPort = messageBrokerPort;
+        this.paymentProducer = messageBrokerPort;
     }
 
     public PaymentDTO processPayment(PaymentDTO dto) {
         var paymentSaved = paymentRepositoryPort.save(dto);
-        messageBrokerPort.sendPaymentTopic(paymentSaved);
+        paymentProducer.sendToTopic(paymentSaved);
         return paymentSaved;
     }
 

@@ -1,5 +1,6 @@
 package com.rasmoo.codeinbook.common.dto;
 
+import com.rasmoo.codeinbook.common.enums.PaymentStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,7 +19,9 @@ public record PaymentDTO(
         CreditCardInfoDTO creditCardInfo,
 
         @NotNull(message = "can not be null")
-        List<BookDTO> bookList
+        List<BookDTO> bookList,
+
+        PaymentStatus paymentStatus
 ) {
 
     public record UserInfoDTO(

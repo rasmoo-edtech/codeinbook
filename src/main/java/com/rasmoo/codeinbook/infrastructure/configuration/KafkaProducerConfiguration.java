@@ -33,7 +33,7 @@ public class KafkaProducerConfiguration {
 
     @Bean
     public NewTopic paymentTopic() {
-        return new NewTopic("paymentTopic", 1, (short) 1);
+        return new NewTopic("payment-topic", 1, (short) 1);
     }
 
 
