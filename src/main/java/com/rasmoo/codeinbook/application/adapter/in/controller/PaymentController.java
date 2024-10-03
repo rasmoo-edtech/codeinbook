@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("/payments")
 @RequiredArgsConstructor
 public class PaymentController {
     private final PaymentServicePort paymentServicePort;
-    @PostMapping("process")
+    @PostMapping("/process")
     public ResponseEntity<PaymentDTO> process(@RequestBody PaymentDTO dto) {
         return ResponseEntity.status(OK).body(paymentServicePort.processPayment(dto));
     }
